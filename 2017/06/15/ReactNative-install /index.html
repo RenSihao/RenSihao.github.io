@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://rensihao.com">
-  <title>iOS-设置UILabel内边距 | 任思豪的博客</title>
+  <title>React Native Learning Notes | 任思豪的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于UILabel的内边距设置，很遗憾系统没有提供原生方法。">
-<meta name="keywords" content="UILabel">
+  <meta name="description" content="React Native Learning Notes环境搭建1、安装homebrew">
+<meta name="keywords" content="React Native">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS-设置UILabel内边距">
-<meta property="og:url" content="http://rensihao.com/2017/05/10/iOS-设置UILabel内边距/index.html">
+<meta property="og:title" content="React Native Learning Notes">
+<meta property="og:url" content="http://rensihao.com/2017/06/15/ReactNative-install /index.html">
 <meta property="og:site_name" content="任思豪的博客">
-<meta property="og:description" content="关于UILabel的内边距设置，很遗憾系统没有提供原生方法。">
-<meta property="og:updated_time" content="2017-05-10T08:53:29.000Z">
+<meta property="og:description" content="React Native Learning Notes环境搭建1、安装homebrew">
+<meta property="og:updated_time" content="2017-10-11T08:12:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS-设置UILabel内边距">
-<meta name="twitter:description" content="关于UILabel的内边距设置，很遗憾系统没有提供原生方法。">
+<meta name="twitter:title" content="React Native Learning Notes">
+<meta name="twitter:description" content="React Native Learning Notes环境搭建1、安装homebrew">
   
     <link rel="alternative" href="/atom.xml" title="任思豪的博客" type="application/atom+xml">
   
@@ -160,28 +160,46 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-iOS-设置UILabel内边距" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-ReactNative-install " class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      iOS-设置UILabel内边距
+      React Native Learning Notes
     </h1>
   
 
         
-        <a href="/2017/05/10/iOS-设置UILabel内边距/" class="archive-article-date">
-  	<time datetime="2017-05-10T08:49:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-10</time>
+        <a href="/2017/06/15/ReactNative-install /" class="archive-article-date">
+  	<time datetime="2017-06-15T09:04:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-15</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>关于UILabel的内边距设置，很遗憾系统没有提供原生方法。</p>
+        <h2 id="React-Native-Learning-Notes"><a href="#React-Native-Learning-Notes" class="headerlink" title="React Native Learning Notes"></a>React Native Learning Notes</h2><h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><p>1、安装homebrew</p>
 <a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew -v</div></pre></td></tr></table></figure>
+<p>2、安装Node.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install node</div></pre></td></tr></table></figure>
+<p>3、安装RN命令行工具（用来创建、初始化、更新项目，运行打包服务）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g react-native-cli</div></pre></td></tr></table></figure>
+<p>4、安装Xcode</p>
+<h3 id="推荐安装"><a href="#推荐安装" class="headerlink" title="推荐安装"></a>推荐安装</h3><p>1、WatchMan</p>
+<p>Watchman是由Facebook提供的监视文件系统变更的工具。安装此工具可以提高开发时的性能（packager可以快速捕捉文件的变化从而实现实时刷新）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install watchman</div></pre></td></tr></table></figure>
+<p>2、Flow</p>
+<p>Flow是一个静态的JS类型检查工具，可方便找出代码中可能存在的类型错误。<br>译注：你在很多示例中看到的奇奇怪怪的冒号问号，以及方法参数中像类型一样的写法，都是属于这个flow工具的语法。这一语法并不属于ES标准，只是Facebook自家的代码规范。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install flow</div></pre></td></tr></table></figure>
+<h3 id="创建第一个项目"><a href="#创建第一个项目" class="headerlink" title="创建第一个项目"></a>创建第一个项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">react-native init RNWeMeShops</div></pre></td></tr></table></figure>
+<p>init命令默认安装最新版本，据官网说，最新0.45版本及以上需要下载boost库编译，国内的特殊环境可能会导致很难下载成功，可以指定版本创建如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">react-native init RNWeMeShops --version 0.44.3</div></pre></td></tr></table></figure>
+<p>运行iOS项目</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">react-native run-ios</div></pre></td></tr></table></figure>
 
       
 
@@ -226,7 +244,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">UILabel</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">React Native</a>
         		</li>
       		
 		</ul>
@@ -293,7 +311,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://rensihao.com/2017/05/10/iOS-设置UILabel内边距/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://rensihao.com/2017/06/15/ReactNative-install /" alt="微信分享二维码">
     </div>
 </div>
 
@@ -306,6 +324,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/09/19/ReactNative-ES6-Notes/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          ReactNative-ES6-Notes
+        
+      </div>
+    </a>
   
   
     <a href="/2017/05/08/向死而生/" id="article-nav-older" class="article-nav-link-wrap">
@@ -445,6 +472,22 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据备份</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React Native</a>
               </li>
             
             <div class="clearfix"></div>

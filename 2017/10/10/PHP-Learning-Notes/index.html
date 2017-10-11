@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://rensihao.com">
-  <title>Tag: 数据备份 | 任思豪的博客</title>
+  <title>PHP学习笔记 | 任思豪的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="iOS | blog | 博客 | 技术">
-<meta property="og:type" content="website">
-<meta property="og:title" content="任思豪的博客">
-<meta property="og:url" content="http://rensihao.com/tags/数据备份/index.html">
+  <meta name="description" content="PHP学习笔记2017.10.10配置Apache">
+<meta name="keywords" content="PHP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP学习笔记">
+<meta property="og:url" content="http://rensihao.com/2017/10/10/PHP-Learning-Notes/index.html">
 <meta property="og:site_name" content="任思豪的博客">
-<meta property="og:description" content="iOS | blog | 博客 | 技术">
+<meta property="og:description" content="PHP学习笔记2017.10.10配置Apache">
+<meta property="og:updated_time" content="2017-10-11T08:17:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="任思豪的博客">
-<meta name="twitter:description" content="iOS | blog | 博客 | 技术">
+<meta name="twitter:title" content="PHP学习笔记">
+<meta name="twitter:description" content="PHP学习笔记2017.10.10配置Apache">
   
     <link rel="alternative" href="/atom.xml" title="任思豪的博客" type="application/atom+xml">
   
@@ -158,71 +160,214 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-PHP-Learning-Notes" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/08/向死而生/" class="archive-article-date">
-  	<time datetime="2017-05-08T09:14:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-08</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/08/向死而生/">向死而生</a>
+    <h1 class="article-title" itemprop="name">
+      PHP学习笔记
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/10/10/PHP-Learning-Notes/" class="archive-article-date">
+  	<time datetime="2017-10-10T09:37:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="PHP学习笔记"><a href="#PHP学习笔记" class="headerlink" title="PHP学习笔记"></a>PHP学习笔记</h1><h2 id="2017-10-10"><a href="#2017-10-10" class="headerlink" title="2017.10.10"></a>2017.10.10</h2><h3 id="配置Apache"><a href="#配置Apache" class="headerlink" title="配置Apache"></a>配置Apache</h3><a id="more"></a>
+<p>mac自带php，查看版本 <figure class="highlight php"><figcaption><span>-v```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">显示如下</div></pre></td></tr></table></figure></p>
+<p>PHP 5.6.30 (cli) (built: Feb  7 2017 16:18:37)<br>Copyright (c) 1997-2016 The PHP Group<br>Zend Engine v2.6.0, Copyright (c) 1998-2016 Zend Technologies<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">mac自带apache，查看版本 ``` httpd -v``` </div><div class="line"></div><div class="line">显示如下</div></pre></td></tr></table></figure></p>
+<p>Server version: Apache/2.4.25 (Unix)<br>Server built:   Feb  6 2017 20:02:10<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">重启apache：```sudo /usr/sbin/apachectl restart</div></pre></td></tr></table></figure></p>
+<p>关闭apache：<figure class="highlight plain"><figcaption><span>/usr/sbin/apachectl stop```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">开启apache：```sudo /usr/sbin/apachectl start</div></pre></td></tr></table></figure></p>
+<h3 id="配置PHP"><a href="#配置PHP" class="headerlink" title="配置PHP"></a>配置PHP</h3><p>1、修改httpd.conf文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /etc/apache2</div><div class="line">sudo open httpd.conf</div></pre></td></tr></table></figure>
+<p>搜索 <em>#LoadModule php5_module libexec/apache2/libphp5.so</em>，去掉 <em>#</em> </p>
+<p>2、重启apache，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apachectl restart</div></pre></td></tr></table></figure></p>
+<p>3、在Apache的根目录下复制index.html.en文件并重命名为info.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo cp /Library/WebServer/Documents/index.html.en /Library/WebServer/Documents/info.php</div></pre></td></tr></table></figure>
+<p>4、打开info.php，在It works后面加上 <em>&lt;?php phpinfo(); ?&gt;</em>,然后再次重启Apache，在浏览器中输入 <a href="http://localhost/info.php" target="_blank" rel="external">http://localhost/info.php</a>,<br>正确的结果应该是出现一个显示php信息的页面，显示It works 及版本号。</p>
+<blockquote>
+<p>注意：系统自带apache根目录默认为 /Library/WebServer/Documents，即 <a href="http://localhost" target="_blank" rel="external">http://localhost</a> 或者 <a href="http://127.0.0.1" target="_blank" rel="external">http://127.0.0.1</a> 实际显示的是该目录下文件</p>
+</blockquote>
+<h3 id="配置MySQL"><a href="#配置MySQL" class="headerlink" title="配置MySQL"></a>配置MySQL</h3><p>打开官网<a href="http://dev.mysql.com/downloads/mysql/" target="_blank" rel="external">http://dev.mysql.com/downloads/mysql/</a>，下载对应的dmg镜像文件即可</p>
+<p>下载完毕，点击安装dmg，安装完毕后会弹出一个root密码框，务必要记下来！！！万一没记需要重置，请参考<a href="http://www.jianshu.com/p/3c7167d21eb6" target="_blank" rel="external">http://www.jianshu.com/p/3c7167d21eb6</a></p>
+<p>为了方便使用MySQL，可以将路径配置一下</p>
+<p>1、打开终端输入： pico .bash_profile; 回车</p>
+<p>2、<strong>export PATH=$PATH:/usr/local/mysql/bin/</strong> 将该路径添加到最后一行，保存退出即可。到此为止，MySQL的配置就差不多了。</p>
+<blockquote>
+<p><a href="http://www.cnblogs.com/jiuyi/p/6211271.html" target="_blank" rel="external">MAC 重置MySQL root 密码</a><br><a href="http://www.jianshu.com/p/ff0dab3c06cd" target="_blank" rel="external">输入mysql -u root -p会出现：zsh: command not found: mysql的提示。此时需要配置环境变量。</a><br><a href="http://www.jianshu.com/p/53ac2d55b279" target="_blank" rel="external">MySQL 报错 ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement</a></p>
+</blockquote>
+<h3 id="使用phpMyAdmin"><a href="#使用phpMyAdmin" class="headerlink" title="使用phpMyAdmin"></a>使用phpMyAdmin</h3><p>1、下载phpMyAdmin，在网址<a href="http://www.phpmyadmin.net/home_page/downloads.php中选择合适的版本下载" target="_blank" rel="external">http://www.phpmyadmin.net/home_page/downloads.php中选择合适的版本下载</a></p>
+<p>2、将下载好的文件解压后，放进/Library/WebServer/Documents/文件夹中，并命名为phpmyadmin。</p>
+<p>3、复制/Library/WebServer/Documents/phpmyadmin中的config.sample.inc.php，并命名为config.inc.php，并放在当前文件夹下。</p>
+<p>4、编辑config.inc.php，修改其中的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cfg[&apos;Servers&apos;]]i][&apos;host&apos;] = &apos;localhost&apos;;</div><div class="line"></div><div class="line">为</div><div class="line"></div><div class="line">cfg[&apos;Servers&apos;]]i][&apos;host&apos;] = &apos;127.0.0.1&apos;;</div></pre></td></tr></table></figure>
+<h3 id="配置PhpStorm"><a href="#配置PhpStorm" class="headerlink" title="配置PhpStorm"></a>配置PhpStorm</h3><p><a href="http://www.skyfox.org/macos-install-phpstorm.html" target="_blank" rel="external">macOS下安装配置PhpStorm</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据备份</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/人生感悟/" class="article-tag-list-link color5">人生感悟</a>
+        			<a href="/categories/技术小栈/" class="article-tag-list-link color5">技术小栈</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://rensihao.com/2017/10/10/PHP-Learning-Notes/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/09/19/JavaScript-Learning-Notes/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript-Learning-Notes</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
   
 
-    
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: document.location.href, 
+    sourceId: "",
+    productKey: "c6448ffe6fbf4871b162e1d85c8f02a3",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+  
+
+  
+
+  
 
 
           </div>
@@ -253,9 +398,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

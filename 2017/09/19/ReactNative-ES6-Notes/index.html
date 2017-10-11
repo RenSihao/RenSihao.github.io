@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://rensihao.com">
-  <title>Tag: UILabel | 任思豪的博客</title>
+  <title>ReactNative-ES6-Notes | 任思豪的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="iOS | blog | 博客 | 技术">
-<meta property="og:type" content="website">
-<meta property="og:title" content="任思豪的博客">
-<meta property="og:url" content="http://rensihao.com/tags/UILabel/index.html">
+  <meta name="description" content="ReactNative-ES6-Notes2017.09.19 参考资料如下React/React Native 的ES5 ES6写法对照表">
+<meta name="keywords" content="ES6,React Native">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ReactNative-ES6-Notes">
+<meta property="og:url" content="http://rensihao.com/2017/09/19/ReactNative-ES6-Notes/index.html">
 <meta property="og:site_name" content="任思豪的博客">
-<meta property="og:description" content="iOS | blog | 博客 | 技术">
+<meta property="og:description" content="ReactNative-ES6-Notes2017.09.19 参考资料如下React/React Native 的ES5 ES6写法对照表">
+<meta property="og:updated_time" content="2017-10-11T08:18:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="任思豪的博客">
-<meta name="twitter:description" content="iOS | blog | 博客 | 技术">
+<meta name="twitter:title" content="ReactNative-ES6-Notes">
+<meta name="twitter:description" content="ReactNative-ES6-Notes2017.09.19 参考资料如下React/React Native 的ES5 ES6写法对照表">
   
     <link rel="alternative" href="/atom.xml" title="任思豪的博客" type="application/atom+xml">
   
@@ -158,48 +160,101 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-ReactNative-ES6-Notes" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/10/iOS-设置UILabel内边距/" class="archive-article-date">
-  	<time datetime="2017-05-10T08:49:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/10/iOS-设置UILabel内边距/">iOS-设置UILabel内边距</a>
+    <h1 class="article-title" itemprop="name">
+      ReactNative-ES6-Notes
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/09/19/ReactNative-ES6-Notes/" class="archive-article-date">
+  	<time datetime="2017-09-19T04:01:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="ReactNative-ES6-Notes"><a href="#ReactNative-ES6-Notes" class="headerlink" title="ReactNative-ES6-Notes"></a>ReactNative-ES6-Notes</h2><h3 id="2017-09-19"><a href="#2017-09-19" class="headerlink" title="2017.09.19"></a>2017.09.19</h3><blockquote>
+<p>参考资料如下<br><a href="http://bbs.reactnative.cn/topic/15/react-react-native-%E7%9A%84es5-es6%E5%86%99%E6%B3%95%E5%AF%B9%E7%85%A7%E8%A1%A8" target="_blank" rel="external">React/React Native 的ES5 ES6写法对照表</a></p>
+</blockquote>
+<a id="more"></a>
+<p>1、引入React包</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES5</span></div><div class="line"><span class="keyword">var</span> React = <span class="built_in">require</span>(<span class="string">"react"</span>);</div><div class="line"><span class="keyword">var</span> &#123;</div><div class="line">	Component,</div><div class="line">	PropTypes</div><div class="line">&#125; = React; <span class="comment">// 引用React抽象组件</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> ReactNative = <span class="built_in">require</span>(<span class="string">"react-native"</span>);</div><div class="line"><span class="keyword">var</span> &#123;</div><div class="line">	Image,</div><div class="line">	Text,</div><div class="line">&#125; = ReactNative; <span class="comment">// 引用具体的ReactNative组件</span></div><div class="line"></div><div class="line"><span class="comment">// ES6</span></div><div class="line"><span class="keyword">import</span> React, &#123;</div><div class="line">    Component,</div><div class="line">    PropTypes,</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> &#123;</div><div class="line">    Image,</div><div class="line">    Text</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div></pre></td></tr></table></figure>
+<p>2、导出单个类</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES5</span></div><div class="line"><span class="keyword">var</span> MyComponent = React.createClass(&#123;</div><div class="line">	...</div><div class="line">&#125;);</div><div class="line"><span class="built_in">module</span>.exports = MyComponent;</div><div class="line"></div><div class="line"><span class="comment">// ES6</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">MyComponent</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">	...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>3、引用某个类</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES5</span></div><div class="line"><span class="keyword">var</span> MyComponent = <span class="built_in">require</span>(<span class="string">'./MyComponent'</span>);</div><div class="line"></div><div class="line"><span class="comment">// ES6</span></div><div class="line"><span class="keyword">import</span> MyComponent <span class="keyword">from</span> <span class="string">'./MyComponent'</span>;</div></pre></td></tr></table></figure>
+<p>4、定义组件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES5</span></div><div class="line"><span class="keyword">var</span> Photo = React.createClass(&#123;</div><div class="line">	<span class="attr">render</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="keyword">return</span> (</div><div class="line">			&lt;Image source = &#123;this.props.source&#125; /&gt;</div><div class="line">		);</div><div class="line">	&#125;;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// ES6</div><div class="line">class Photo extends React.Component &#123;</div><div class="line">	render() &#123;</div><div class="line">		return (</div><div class="line">			&lt;Image source = &#123;this.props.source&#125; /&gt;</div><div class="line">		);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>5、给组件定义方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES5</span></div><div class="line"><span class="keyword">var</span> Photo = React.createClass(&#123;</div><div class="line">    <span class="attr">componentWillMount</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    </div><div class="line">    &#125;,</div><div class="line">    <span class="attr">render</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> (</div><div class="line">            &lt;Image source = &#123;this.props.source&#125; /&gt;</div><div class="line">        );</div><div class="line">    &#125;,</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// ES6</div><div class="line">class Photo extends React.Component &#123;</div><div class="line">    componentWillMount() &#123;</div><div class="line">    </div><div class="line">    &#125;</div><div class="line">    render() &#123;</div><div class="line">        return (</div><div class="line">            &lt;Image source = &#123;this.props.source&#125; /&gt;</div><div class="line">        );</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>6、定义组的属性类型和默认属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES5</span></div><div class="line"><span class="keyword">var</span> Video = React.createClass (&#123;</div><div class="line">    <span class="attr">getDefaultProps</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            <span class="attr">autoPlay</span>: <span class="literal">false</span>,</div><div class="line">            <span class="attr">maxLoops</span>: <span class="number">10</span>,</div><div class="line">        &#125;; </div><div class="line">    &#125;,</div><div class="line">    <span class="attr">propTypes</span>: &#123;</div><div class="line">        <span class="attr">autoPlay</span>: React.PropTypes.bool.isRequired,</div><div class="line">        <span class="attr">maxLoops</span>: React.PropTypes.number.isRequired,</div><div class="line">        <span class="attr">posterFrameSrc</span>: React.PropTypes.string.isRequired,</div><div class="line">        <span class="attr">videoSrc</span>: React.PropTypes.string.isRequired,</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">render</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> (</div><div class="line">            &lt;View /&gt;</div><div class="line">        );</div><div class="line">    &#125;,</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// ES6，统一使用static成员实现，IE10及之前版本不能被继承，IE11和其他浏览器没问题</div><div class="line">class Video extends React.Component &#123;</div><div class="line">    static defaultProps = &#123;</div><div class="line">        autoPlay: false,</div><div class="line">        maxLoops: 10,</div><div class="line">    &#125;; // 有分号</div><div class="line">    static propTypes = &#123;</div><div class="line">        autoPlayt: React.PropTypes.bool.isRequired,</div><div class="line">        maxLooops: React.PropTypes.number.isRequired,</div><div class="line">        posterFrameSrc: React.PropTypes.string.isRequired,</div><div class="line">        videoSrc: React.PropTypes.string.isRequired,</div><div class="line">    &#125;; // 有分号</div><div class="line">    render() &#123;</div><div class="line">        return (</div><div class="line">            &lt;View /&gt;</div><div class="line">        );</div><div class="line">    &#125; // 没有分号也没有逗号</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>7、初始化STATE</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES5</span></div><div class="line"><span class="keyword">var</span> Video = React.createClass (&#123;</div><div class="line">    <span class="attr">getInitialState</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            <span class="attr">loopsRemaining</span>: <span class="keyword">this</span>.props.maxLoops,</div><div class="line">        &#125;;  </div><div class="line">    &#125;,</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">// ES6写法一</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Video</span> <span class="keyword">extends</span> <span class="title">Reac</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">    state = &#123;</div><div class="line">        <span class="attr">loopsRemaining</span>: <span class="keyword">this</span>.props.maxLoops,</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// ES6写法二 (推荐写法)</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Video</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(props) &#123;</div><div class="line">        <span class="keyword">super</span>(props);</div><div class="line">        <span class="keyword">this</span>.state = &#123;</div><div class="line">            <span class="attr">loopsRemaining</span>: <span class="keyword">this</span>.props.maxLoops,</div><div class="line">        &#125;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>8、把方法作为回调提供</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES5</span></div><div class="line"><span class="keyword">var</span> PostInfo = React.createClass(&#123;</div><div class="line">    <span class="attr">handleOptionsButtonClick</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.setState(&#123;<span class="attr">showOptionsModal</span>: <span class="literal">true</span>&#125;);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">render</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> (</div><div class="line">            &lt;TouchableHighlight onPress = &#123;this.handleOptionsButtonClick&#125;&gt;</div><div class="line">                &lt;Text&gt; &#123;this.props.label&#125; &lt;/Text&gt;</div><div class="line">            &lt;TouchableHighlight&gt;   </div><div class="line">        )</div><div class="line">    &#125;,</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// ES6</div><div class="line">class PostInfo extends React.Component &#123;</div><div class="line">    handleOptionsButtonClick(e) &#123;</div><div class="line">        this.setState(&#123;showOptionsModal: true&#125;);</div><div class="line">    &#125;</div><div class="line">    render() &#123;</div><div class="line">        return (</div><div class="line">            &lt;TouchableHighlight </div><div class="line">                onPress = &#123;this.handleOptionsButtonClick.bind(this)&#125; </div><div class="line">                onPress = &#123;e=&gt;this.handleOptionsButtonClick(e)&#125;</div><div class="line">            &gt;</div><div class="line">                &lt;Text&gt; &#123;this.props.label&#125; &lt;/Text&gt;</div><div class="line">            </div><div class="line">            &lt;/TouchableHighlight&gt;</div><div class="line">        )</div><div class="line">    &#125;,</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 箭头函数eg</div><div class="line">()=&gt;1</div><div class="line">v=&gt;v+1</div><div class="line">(a, b)=&gt;a+b</div><div class="line">()=&gt;&#123;</div><div class="line">    alert("foo");</div><div class="line">&#125;</div><div class="line">e=&gt;&#123;</div><div class="line">    if (e == 0) &#123;</div><div class="line">        return 0;</div><div class="line">    &#125;</div><div class="line">    return 1000/e;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 箭头函数和bind函数，每次被执行返回的都是一个新的函数引用，如果你还需要函数的引用去做一些别的事情（例如卸载监听器），那么需要自己保存这个引用</div><div class="line"></div><div class="line">// 错误做法</div><div class="line">class PauseMenu extends React.Component &#123;</div><div class="line">    componetnWillMount() &#123;</div><div class="line">        AppStateIOS.addEventListener('change', this.onAppPaused.bind(this));</div><div class="line">    &#125;</div><div class="line">    componentDidUnmount() &#123;</div><div class="line">        AppStateIOS.removeEventListener('change', this.onAppPause.bind(this));</div><div class="line">    &#125;</div><div class="line">    onAppPaused(event) &#123;</div><div class="line">    </div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 正确做法一</div><div class="line">class PauseMenu extens React.Component &#123;</div><div class="line">    constructor(props) &#123;</div><div class="line">        super(props);</div><div class="line">        this._onAppPaused = this.onAppPaused.bind(this);</div><div class="line">    &#125;</div><div class="line">    componentWillMount() &#123;</div><div class="line">        AppStateIOS.addEventListener('change', this._onAppPaused);</div><div class="line">    &#125;</div><div class="line">    componentDidUnmount() &#123;</div><div class="line">        AppStateIOS.removeEventListener('change', this._onAppPaused);</div><div class="line">    &#125;</div><div class="line">    onAppPaused(event) &#123;</div><div class="line">    </div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 正确做法二</div><div class="line">class PauseMenu extends React.Component &#123;</div><div class="line">    componentWillMount() &#123;</div><div class="line">        AppStateIOS.addEventListener('change', this.onAppPaused);</div><div class="line">    &#125;</div><div class="line">    componentDidUnmoun() &#123;</div><div class="line">        AppStateIOS.removeEventListener('change', this.onAppPaused);</div><div class="line">    &#125;</div><div class="line">    onAppPaused = (event) =&gt; &#123;</div><div class="line">        // 把方法直接作为一个arrow function的属性来定义，初始化的时候就绑定好了this指针</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">UILabel</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">React Native</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -212,17 +267,111 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://rensihao.com/2017/09/19/ReactNative-ES6-Notes/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/09/19/JavaScript-Learning-Notes/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JavaScript-Learning-Notes
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/06/15/ReactNative-install /" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">React Native Learning Notes</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
   
 
-    
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: document.location.href, 
+    sourceId: "",
+    productKey: "c6448ffe6fbf4871b162e1d85c8f02a3",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+  
+
+  
+
+  
 
 
           </div>
@@ -253,9 +402,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
@@ -327,6 +476,22 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据备份</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React Native</a>
               </li>
             
             <div class="clearfix"></div>
