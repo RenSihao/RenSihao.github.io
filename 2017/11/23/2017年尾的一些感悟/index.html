@@ -6,19 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://rensihao.com">
-  <title>PHP学习笔记 | 任思豪的博客</title>
+  <title>任思豪的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="2017.10.10配置Apache">
-<meta name="keywords" content="PHP">
+  <meta name="description" content="title: 2017年尾的一些感悟date: 2017-11-24 17:09:13categories:     - 人生感悟   tags:   - 2017  2017年即将结束，总感觉有些东西，想说说不出来，又憋得慌，只好打开荒草杂生的博客……">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PHP学习笔记">
-<meta property="og:url" content="http://rensihao.com/2017/10/10/PHP-Learning-Notes/index.html">
+<meta property="og:title" content="任思豪的博客">
+<meta property="og:url" content="http://rensihao.com/2017/11/23/2017年尾的一些感悟/index.html">
 <meta property="og:site_name" content="任思豪的博客">
-<meta property="og:description" content="2017.10.10配置Apache">
-<meta property="og:updated_time" content="2017-10-11T08:26:30.000Z">
+<meta property="og:description" content="title: 2017年尾的一些感悟date: 2017-11-24 17:09:13categories:     - 人生感悟   tags:   - 2017  2017年即将结束，总感觉有些东西，想说说不出来，又憋得慌，只好打开荒草杂生的博客……">
+<meta property="og:updated_time" content="2017-11-24T06:09:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PHP学习笔记">
-<meta name="twitter:description" content="2017.10.10配置Apache">
+<meta name="twitter:title" content="任思豪的博客">
+<meta name="twitter:description" content="title: 2017年尾的一些感悟date: 2017-11-24 17:09:13categories:     - 人生感悟   tags:   - 2017  2017年即将结束，总感觉有些东西，想说说不出来，又憋得慌，只好打开荒草杂生的博客……">
   
     <link rel="alternative" href="/atom.xml" title="任思豪的博客" type="application/atom+xml">
   
@@ -160,46 +159,28 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-PHP-Learning-Notes" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-2017年尾的一些感悟" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      PHP学习笔记
-    </h1>
-  
-
-        
-        <a href="/2017/10/10/PHP-Learning-Notes/" class="archive-article-date">
-  	<time datetime="2017-10-10T09:37:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="2017-10-10"><a href="#2017-10-10" class="headerlink" title="2017.10.10"></a>2017.10.10</h2><h3 id="配置Apache"><a href="#配置Apache" class="headerlink" title="配置Apache"></a>配置Apache</h3><a id="more"></a>
-<p>mac自带php，查看版本   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php -v</div></pre></td></tr></table></figure>
-<p>显示如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">PHP 5.6.30 (cli) (built: Feb  7 2017 16:18:37)</div><div class="line">Copyright (c) 1997-2016 The PHP Group</div><div class="line">Zend Engine v2.6.0, Copyright (c) 1998-2016 Zend Technologies</div></pre></td></tr></table></figure>
-<p>mac自带apache，查看版本 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> httpd -v</div><div class="line">``` </div><div class="line"></div><div class="line">显示如下</div></pre></td></tr></table></figure>
-<p>Server version: Apache/2.4.25 (Unix)<br>Server built:   Feb  6 2017 20:02:10<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">重启apache</div></pre></td></tr></table></figure></p>
-<p>sudo /usr/sbin/apachectl restart<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">关闭apache</div></pre></td></tr></table></figure></p>
-<p>sudo /usr/sbin/apachectl stop<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">开启apache</div></pre></td></tr></table></figure></p>
-<p>sudo /usr/sbin/apachectl start<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 配置PHP</div><div class="line"></div><div class="line">1、修改httpd.conf文件</div></pre></td></tr></table></figure></p>
-<p>cd /etc/apache2<br>sudo open httpd.conf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">搜索 *#LoadModule php5_module libexec/apache2/libphp5.so*，去掉 *#* </div><div class="line"></div><div class="line">2、重启apache</div></pre></td></tr></table></figure></p>
-<p>sudo apachectl restart<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">3、在Apache的根目录下复制index.html.en文件并重命名为info.php</div></pre></td></tr></table></figure></p>
-<p>sudo cp /Library/WebServer/Documents/index.html.en /Library/WebServer/Documents/info.php</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">4、打开info.php，在It works后面加上 *&lt;?php phpinfo(); ?&gt;*,然后再次重启Apache，在浏览器中输入 [http://localhost/info.php](http://localhost/info.php),</div><div class="line">正确的结果应该是出现一个显示php信息的页面，显示It works 及版本号。</div><div class="line"></div><div class="line">&gt; 注意：系统自带apache根目录默认为 /Library/WebServer/Documents，即 [http://localhost](http://localhost) 或者 [http://127.0.0.1](http://127.0.0.1) 实际显示的是该目录下文件</div><div class="line"></div><div class="line"></div><div class="line">### 配置MySQL</div><div class="line"></div><div class="line">打开官网[http://dev.mysql.com/downloads/mysql/](http://dev.mysql.com/downloads/mysql/)，下载对应的dmg镜像文件即可</div><div class="line"></div><div class="line">下载完毕，点击安装dmg，安装完毕后会弹出一个root密码框，务必要记下来！！！万一没记需要重置，请参考[http://www.jianshu.com/p/3c7167d21eb6](http://www.jianshu.com/p/3c7167d21eb6)</div><div class="line"></div><div class="line">为了方便使用MySQL，可以将路径配置一下</div><div class="line"></div><div class="line">1、打开终端输入： pico .bash_profile; 回车</div><div class="line"></div><div class="line">2、**export PATH=$PATH:/usr/local/mysql/bin/** 将该路径添加到最后一行，保存退出即可。到此为止，MySQL的配置就差不多了。</div><div class="line"></div><div class="line">&gt; [MAC 重置MySQL root 密码](http://www.cnblogs.com/jiuyi/p/6211271.html)  </div><div class="line">&gt; [输入mysql -u root -p会出现：zsh: command not found: mysql的提示。此时需要配置环境变量。](http://www.jianshu.com/p/ff0dab3c06cd)  </div><div class="line">&gt; [MySQL 报错 ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement](http://www.jianshu.com/p/53ac2d55b279)</div><div class="line"></div><div class="line"></div><div class="line">### 使用phpMyAdmin</div><div class="line"></div><div class="line">1、下载phpMyAdmin，在网址http://www.phpmyadmin.net/home_page/downloads.php中选择合适的版本下载</div><div class="line"></div><div class="line"></div><div class="line">2、将下载好的文件解压后，放进/Library/WebServer/Documents/文件夹中，并命名为phpmyadmin。</div><div class="line"></div><div class="line"></div><div class="line">3、复制/Library/WebServer/Documents/phpmyadmin中的config.sample.inc.php，并命名为config.inc.php，并放在当前文件夹下。</div><div class="line"></div><div class="line"></div><div class="line">4、编辑config.inc.php，修改其中的</div></pre></td></tr></table></figure>
-<p>cfg[‘Servers’]]i][‘host’] = ‘localhost’;</p>
-<p>为</p>
-<p>cfg[‘Servers’]]i][‘host’] = ‘127.0.0.1’;</p>
-<p>```</p>
-<h3 id="配置PhpStorm"><a href="#配置PhpStorm" class="headerlink" title="配置PhpStorm"></a>配置PhpStorm</h3><p><a href="http://www.skyfox.org/macos-install-phpstorm.html" target="_blank" rel="external">macOS下安装配置PhpStorm</a></p>
+        <p>title: 2017年尾的一些感悟<br>date: 2017-11-24 17:09:13<br>categories:    </p>
+<pre><code>- 人生感悟  
+</code></pre><p>tags:  </p>
+<pre><code>- 2017
+</code></pre><p> <strong>2017年即将结束，总感觉有些东西，想说说不出来，又憋得慌，只好打开荒草杂生的博客……</strong></p>
+<a id="more"></a>
+<p>说来真的惭愧，这一年基本没产出什么有质量的文章，不找借口，就是懒。唉，不知道为啥，感觉自己变得老气横秋，难道是代码撸多了？！😓</p>
+<p>细说这一年发生的事情，其实也蛮多的，过年那几天，我们老大（现在还是）给我打了个电话，说有没有兴趣一起出来跟着bruce（老大的老大）单干，也没多扯，就这么稀里糊涂过完年，3月份在前公司办了离职手续，踏上了一条漫漫长路。</p>
+<p><strong>3月份-8月份</strong>，主要工作内容就是和雷同学一起全力开发iOS移动端APP，本职工作没啥好聊的，渐渐感觉到了iOS技术的瓶颈。</p>
+<p><strong>8月份-10月份</strong>，公司运营销售模式效果不佳，高层战略调整转移，渐渐移动端更新变少，主要负责线上维护和bug修复，切身体会到了移动端的冬天。</p>
+<p><strong>10月份 - 至今</strong>，公司转型，业务模式变更，前后端架构也有了人事调整和组织分配，我们四个移动端的，终于，被变更成了前端开发。</p>
+<p>写到这里，想起了前端那些事，情不自禁流下了苦逼的泪水……</p>
+<blockquote>
+<p>内心咆哮：前端真特么的是坑啊</p>
+</blockquote>
+<p>目前的状态，感觉又回到了15年年末到16年年中在Shopex汗青哥手下那会，各种苦逼的学习，疯狂的吸吮自己不了解的前端知识，只不过那会是iOS领域。所以，接下来自己的博客估计都是关于大前端的知识了，iOS相关文章可能会暂时被封印一段时间咯。</p>
+<p>去年6月份毕业，从学校办理好手续，就带着自己出发了，现在想想，真的是怀揣梦想仗剑走天涯的感觉。</p>
 
       
 
@@ -239,29 +220,7 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/技术小栈/" class="article-tag-list-link color5">技术小栈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
 
@@ -311,7 +270,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://rensihao.com/2017/10/10/PHP-Learning-Notes/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://rensihao.com/2017/11/23/2017年尾的一些感悟/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -325,18 +284,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/11/23/2017年尾的一些感悟/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/11/24/ES6语法学习系列二：变量的解构赋值/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          (no title)
+          ES6语法学习系列二：变量的解构赋值
         
       </div>
     </a>
   
   
-    <a href="/2017/09/19/ES6语法学习系列一：简介&基础/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">ES6语法学习系列一：简介&amp;基础</div>
+    <a href="/2017/10/10/PHP-Learning-Notes/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">PHP学习笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
