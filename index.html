@@ -410,89 +410,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前端React学习系列一：基础"><a href="#前端React学习系列一：基础" class="headerlink" title="前端React学习系列一：基础"></a>前端React学习系列一：基础</h1><h3 id="第一个React应用"><a href="#第一个React应用" class="headerlink" title="第一个React应用"></a>第一个React应用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 安装 create-react-app</div><div class="line">npm install --global create-react-app</div><div class="line"></div><div class="line">// 初始化创建应用</div><div class="line">create-react-app first_react_app</div></pre></td></tr></table></figure>
-<h3 id="初步理解React核心思想"><a href="#初步理解React核心思想" class="headerlink" title="初步理解React核心思想"></a>初步理解React核心思想</h3><p>React，核心是所有组件按照数据驱动渲染模式工作，一切基于组件。</p>
-<pre><code>浏览器渲染HTML网页，首先会将HTML文本解析构建DOM树，然后根据DOM树渲染出用户看到的界面，改变界面就需要改变DOM树上的节点，因此，我们需要尽可能减少DOM操作。
-JSX会被Babel解析为创建React组件或HTML元素的语句，JSX首先构建Virtual DOM，Virtual DOM是对DOM树的抽象，它不会触及浏览器行为，只存在于JS空间的树形结构，因此每次渲染React组件时，都会对比这一次产生的Virtual DOM和上一次渲染的Virtutal DOM，发现差别，从而修改真正的DOM树就只需要修改差别中的部分即可。
-</code></pre><h3 id="其他技术方案对比"><a href="#其他技术方案对比" class="headerlink" title="其他技术方案对比"></a>其他技术方案对比</h3><p>jQuery，核心是事件驱动DOM元素操作</p>
-<blockquote>
-<p>优点：简单易懂，适合新手<br>缺点：项目庞大之后代码臃肿，逻辑缠绕</p>
-</blockquote>
-<h3 id="设计高质量React组件"><a href="#设计高质量React组件" class="headerlink" title="设计高质量React组件"></a>设计高质量React组件</h3><p>React组件数据分为两种，<strong>prop</strong> 和 <strong>state</strong>，无论哪个发生改变，都会引发组件重新渲染</p>
-<p><strong>prop</strong>，组件的对外接口，在外部被赋值，组件内部不应该改变prop的值</p>
-<p>支持类型除了字符串，可以是任何一种JS语言支持的数据类型，当prop的类型不是字符串时，在JSX中必须用花括号把prop值包裹</p>
-<p><strong>state</strong>，组件的内部状态，在内部被赋值，state就是让组件来改变的</p>
-<p>注意：React的render函数只能返回一个元素</p>
-<p>React组件被第一次渲染，依次调用函数顺序如下：</p>
-<p>1、<em>constructor</em>  </p>
-<pre><code>并不是每个React组件都需要定义自己的构造函数，无状态的React组件就不需要。通常构造函数的目的：
-第一点，初始化state，因为组件声明周期内任何函数都可能要访问state，此时初始化时机再合适不过了。
-第二点，绑定成员函数的this环境，注意，this就是当前组件实例。
-</code></pre><p>2、<em>getInitialState</em>  </p>
-<pre><code>此函数返回值用来初始化组件的this.state，但是只有用React.createClass方法创造的组件才会这样，因此我们ES6的语法创建组件根本不会生效。
-</code></pre><p>3、<em>getDefaultProps</em>  </p>
-<pre><code>同理上。
-</code></pre><p>4、<em>componentWillMount</em>  </p>
-<pre><code>即将渲染之前，和componentDidMount函数将render函数一前一后夹住，不应该在此函数内修改state之类的操作，如果要做，应该在constructor函数内做。
-</code></pre><p>5、<em>render</em>  </p>
-<pre><code>React组件最重要的函数，且一定要开发者实现，因为所有React组件的父类React.Component类对render之外的函数都提供了默认实现。
-render函数并不做实际渲染，只是返回一个JSX描述结构，渲染是由React来驱动的。如果某个组件不需要渲染界面，可以让render函数返回一个null或者false，即不需要渲染任何DOM元素。
-注意：render函数是一个纯函数，完全根据this.state和this.props来决定返回结果，例如在render函数中调用this.setState是错误的做法，因为纯函数不应该引起任何状态改变。
-</code></pre><p>6、<em>componentDidMount</em></p>
-<pre><code>componentDidMount并不一定紧跟着render函数之后调用，例如外部先后调用了三个本类实例组件，那么componentDidMount会在三个本类实例组件的render函数都调用完毕之后才会依次调用。
-因为render函数本身并不会在DOM树上渲染或者装载内容，它只是返回一个JSX对象，React库根据此JSX对象决定如何渲染，因此只有三个实例对象的render函数分别都返回JSX对象，React才会综合考虑如何渲染界面，此时componentDidMount才会依次收尾装载。
-注意：只有componetDidMount才会在浏览器执行，因为真正的装载完成是不可能在服务端完成的，React组件产生的只是一个纯粹的字符串，真正的DOM元素渲染工作是由浏览器完成的，我们可以利用这个特性，通过AJAX获取数据来填充组件内容，因为此时组件已经被装载到DOM树上了。
-如何让React和其他UI库和平共处？就是需要利用此函数，此时所有的React组件对应的DOM已经存在且事件处理函数也设置好了，这时候调用jquery代码，让jquery在已经绘制好的DOM基础上增强新的功能，但是注意，这一步只是处理了装载过程
-</code></pre><p>下面是组件被装载到DOM树之后的更新函数调用顺序：</p>
-<p>1、<em>componentWillReceiveProps</em></p>
-<pre><code>只要父组件的render函数被调用，那么里面被渲染的子组件都会经历更新过程，无论父组件传给子组件的props有没有改变，都会触发子组件的componentWillReceiveProps函数。
-注意，this.setState方法触发更新不会触发componentWillReceiveProps函数，因为this.setState是根据新的props值来计算是否需要更新内部状态state，如果再次触发componentWillReceiveProps就会导致死循环。
-</code></pre><p>2、<em>shouldComponentUpdate</em></p>
-<pre><code>返回一个bool值，用来决定组件是否更新渲染。必要时可以优化React渲染性能。this.setState函数引发更新，并不会立刻更新组件的state，在执行到shouldComponentUpdate时，this.state依然是this.setState函数执行之前的值。
-</code></pre><p>3、<em>componentWillUpdate</em></p>
-<p>4、<em>render</em></p>
-<p>5、<em>componentDidUpdate</em></p>
-<pre><code>该did函数无论更新过程在服务端还是浏览器端，都会被调用，当React组件被更新时，原有的内容被重新渲染，这时候就需要在didUpdate函数里再次调用jQuery代码。
-注意：使用React做服务端渲染时，基本不会经历更新过程，因为服务端只需要产出HTML代码，而装载过程就够了，所以正常情况下服务端不会调用didUpdate函数。
-</code></pre><p>React组件卸载过程</p>
-<p><em>componentWillUnmount</em></p>
-<pre><code>当React组件从DOM树上删除之前，该函数会被调用，适合做清理工作，例如在componentDidMount中用非React方法创造了一些DOM元素，如果不处理就会造成内存泄漏，此时就应该在willUnmoun中清理。
-</code></pre><h3 id="Flux和Redux"><a href="#Flux和Redux" class="headerlink" title="Flux和Redux"></a>Flux和Redux</h3><p>通过props和state来管理数据，是比较麻烦的，尤其当组件包裹层数过多时，最内层组件想传递数据给最外层组件，如果还是通过props（一般是函数类型）调起，就会导致层层转发，中间组件可能根本用不到这些数据，明显违反了高内聚低耦合的原则。而且，父组件和子组件同时对某个数据进行记录，如果出现bug，导致数据记录不一致，也会引发很多麻烦。</p>
-<p>因此，我们需要一个统一管理数据的全局机制。</p>
-<p><strong>Flux</strong>，核心理念是单项数据流传递。它的出现是为了推翻MVC的思维框架，因为React扮演的是MVC中的view，所以涉及到数据管理就无能为力。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// Flux框架严格的单向数据流控制</div><div class="line">Action -&gt; Dispatcher -&gt; Store -&gt; View</div><div class="line">            ^                      ^</div><div class="line">            |________ Action ______|</div><div class="line">          </div><div class="line">Action， 驱动Dispatcher的js对象           </div><div class="line">Dispatcher，处理动作分发，维持Store之间的依赖关系</div><div class="line">Store，负责存储数据和处理数据相关逻辑</div><div class="line">View，视图</div></pre></td></tr></table></figure>
-<p><strong>Flux</strong>缺点：</p>
-<p>1、Store之间依赖关系，例如，Store-A处理action对象之前，需要Store-B先处理完毕action对象，那么Store-B必须把注册回调函数的dispatchToken对外，那么Store-A必须在代码里建立对Store-B的依赖。</p>
-<p>2、难以进行服务端渲染</p>
-<p>3、Store混杂了逻辑和状态</p>
-<p><strong>Redux</strong>三大基本原则：</p>
-<p>1、唯一数据源</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">唯一Store上的状态，是一个树形对象，每个组件都是树形对象上的一部分数据，所以如何设计Store的状态结构，就是Redux应用的核心问题。</div></pre></td></tr></table></figure>
-<p>2、保持状态只读</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">状态改变驱动界面渲染，但是注意修改状态的方法，不是直接修改状态值，而是创建一个新的状态对象返回给Redux，由Redux完成新的状态组装。</div></pre></td></tr></table></figure>
-<p>3、数据改变只能通过纯函数完成</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">npm install --save react-redux</div><div class="line"></div><div class="line">[react 终极脚手架](https://github.com/aiyuekuang/react_home)</div><div class="line"></div><div class="line"></div><div class="line">    从需求出发，看看使用React需要什么：</div><div class="line">    1. React有props和state: props意味着父级分发下来的属性，state意味着组件内部可以自行管理的状态，并且整个React没有数据向上回溯的能力，也就是说数据只能单向向下分发，或者自行内部消化。理解这个是理解React和Redux的前提。</div><div class="line">    2. 一般构建的React组件内部可能是一个完整的应用，它自己工作良好，你可以通过属性作为API控制它。但是更多的时候发现React根本无法让两个组件互相交流，使用对方的数据。然后这时候不通过DOM沟通（也就是React体制内）解决的唯一办法就是提升state，将state放到共有的父组件中来管理，再作为props分发回子组件。</div><div class="line">    3. 子组件改变父组件state的办法只能是通过onClick触发父组件声明好的回调，也就是父组件提前声明好函数或方法作为契约描述自己的state将如何变化，再将它同样作为属性交给子组件使用。这样就出现了一个模式：数据总是单向从顶层向下分发的，但是只有子组件回调在概念上可以回到state顶层影响数据。这样state一定程度上是响应式的。</div><div class="line">    4. 为了面临所有可能的扩展问题，最容易想到的办法就是把所有state集中放到所有组件顶层，然后分发给所有组件。</div><div class="line">    5. 为了有更好的state管理，就需要一个库来作为更专业的顶层state分发给所有React应用，这就是Redux。</div><div class="line"></div><div class="line">    让我们回来看看重现上面结构的需求：</div><div class="line">    a. 需要回调通知state (等同于回调参数) -&gt; actionb. 需要根据回调处理 (等同于父级方法) -&gt; reducerc. 需要state (等同于总状态) -&gt; store对Redux来说只有这三个要素：a. action是纯声明式的数据结构，只提供事件的所有要素，不提供逻辑。</div><div class="line">    b. reducer是一个匹配函数，action的发送是全局的：所有的reducer都可以捕捉到并匹配与自己相关与否，相关就拿走action中的要素进行逻辑处理，修改store中的状态，不相关就不对state做处理原样返回。</div><div class="line">    c. store负责存储状态并可以被react api回调，发布action.当然一般不会直接把两个库拿来用，还有一个binding叫react-redux, 提供一个Provider和connect。很多人其实看懂了redux卡在这里。</div><div class="line">    a. Provider是一个普通组件，可以作为顶层app的分发点，它只需要store属性就可以了。它会将state分发给所有被connect的组件，不管它在哪里，被嵌套多少层。</div><div class="line">    b. connect是真正的重点，它是一个科里化函数，意思是先接受两个参数（数据绑定mapStateToProps和事件绑定mapDispatchToProps），再接受一个参数（将要绑定的组件本身）：mapStateToProps：构建好Redux系统的时候，它会被自动初始化，但是你的React组件并不知道它的存在，因此你需要分拣出你需要的Redux状态，所以你需要绑定一个函数，它的参数是state，简单返回你关心的几个值。</div><div class="line">    mapDispatchToProps：声明好的action作为回调，也可以被注入到组件里，就是通过这个函数，它的参数是dispatch，通过redux的辅助方法bindActionCreator绑定所有action以及参数的dispatch，就可以作为属性在组件里面作为函数简单使用了，不需要手动dispatch。这个mapDispatchToProps是可选的，如果不传这个参数redux会简单把dispatch作为属性注入给组件，可以手动当做store.dispatch使用。这也是为什么要科里化的原因。</div><div class="line">    做好以上流程Redux和React就可以工作了。简单地说就是：</div><div class="line">    1.顶层分发状态，让React组件被动地渲染。</div><div class="line">    2.监听事件，事件有权利回到所有状态顶层影响状态</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">### React和Redux心得</div><div class="line"></div><div class="line">UI组件：只负责渲染不带逻辑，所有数据通过props提供，由React负责</div><div class="line">容器组件：负责数据管理和业务逻辑处理，由Redux负责</div><div class="line"></div><div class="line">**Provider** 由react-redux提供，用于保存store给子组件中connect使用，将它包裹在根组件的最外层，它会将store传递给容器组件。</div><div class="line"></div><div class="line">```javascript</div><div class="line">    </div><div class="line">    // Provider通过getChildContext方法将store保存到context里，之后再connect会通过context读取store</div><div class="line">    ReactDOM.render(</div><div class="line">        &lt;Provider store=&#123;store&#125;&gt;</div><div class="line">            &lt;ColorAppVisible/&gt;</div><div class="line">        &lt;/Provider&gt;,</div><div class="line">        document.getElementById(&apos;redux&apos;)</div><div class="line">    )</div></pre></td></tr></table></figure>
-<p><strong>connect()</strong> </p>
-<p>connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])作用是生成容器组件，容器组件将UI组件包装起来了，所有的数据都存放在容器组件</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">const</span> ColorAppVisible = <span class="keyword">const</span> (</div><div class="line">    mapStateToProps,</div><div class="line">    mapDispatchToProps</div><div class="line">)(ColorApp);</div></pre></td></tr></table></figure>
-<p><strong>mapStateToProps(state)</strong></p>
-<p>该方法的作用是，组件将监听store的任何变化，返回需要传递给子组件的state，返回的值将作为属性绑定在容器组件，之后UI组件就可以通过this.props去读取数据了</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> mapStateToProps = <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> &#123;<span class="attr">colors</span>: state.headerReducer&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>mapDispatchToProps(dispatch)</strong></p>
-<p>该方法的作用是，将逻辑处理事件传递给子组件，返回一个dispatchProps对象，该对象是action和dispatch的一个组合，返回的对象将被绑定在UI组件上</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">const</span> mapDispatchToProps = <span class="function">(<span class="params">dispatch, ownProps</span>) =&gt;</span> &#123;</div><div class="line"> <span class="keyword">const</span> &#123;id&#125; = ownProps;</div><div class="line"> <span class="keyword">return</span> &#123;</div><div class="line">   <span class="attr">onToggle</span>: <span class="function"><span class="params">()</span> =&gt;</span> dispatch(toggleTodo(id)),</div><div class="line">   <span class="attr">onRemove</span>: <span class="function"><span class="params">()</span> =&gt;</span> dispatch(removeTodo(id))</div><div class="line"> &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>redux提供了一个bindActionCreators方法，作用是将Actions和dispatch组合起来，返回一个dispatchProps对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">// 不使用bindActionCreators</div><div class="line">export const mapDispatchToProps = dispatch =&gt; (&#123;</div><div class="line"></div><div class="line">    addAction: (colorText) =&gt; (&#123;</div><div class="line">        type: ACTION_ADD,</div><div class="line">        color: &#123;</div><div class="line">            id: guid(),</div><div class="line">            color: colorText</div><div class="line">        &#125;</div><div class="line">    &#125;),</div><div class="line">    </div><div class="line">    updateAction: (color) =&gt; (&#123;</div><div class="line">        type: ACTION_ADD,</div><div class="line">        color: color</div><div class="line">    &#125;)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">// 使用bindActionCreators</div><div class="line">export const headerAction = &#123;</div><div class="line"></div><div class="line">    addAction: (colorText) =&gt; (&#123;</div><div class="line">        type: ACTION_ADD,</div><div class="line">        color: &#123;</div><div class="line">            id: guid(),</div><div class="line">            color: colorText</div><div class="line">        &#125;</div><div class="line">    &#125;),</div><div class="line">    </div><div class="line">    updateAction: (color) =&gt; (&#123;</div><div class="line">        type: ACTION_ADD,</div><div class="line">        color: color</div><div class="line">    &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">export const mapDispatchToProps = dispatch =&gt; (&#123;</div><div class="line">    actions: bindActionCreators(headerAction, dispatch)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p><strong>mergeProps()</strong></p>
-<p>[mergeProps(stateProps, dispatchProps, ownProps):props] Function :</p>
-<p>如果指定了这个参数，mapStateToProps() 与 mapDispatchToProps() 执行结果和组件自身的props将传入到这个回调函数。该回调函数返回的对象将作为props传递到被包装的组件中，可以利用这个函数，根据组件的props来删选部分的state数据，或者把props中的某个特定变量与action creator绑定在一起。如果省略这个参数，默认返回 Object.assign({}, ownProps, stateProps, dispatchProps)</p>
-<p><strong>options</strong></p>
-<p>[options] （Object）如果指定这个参数，可以定制connector的行为</p>
-<p>[pure = true] （Boolean） : 如果为true， connector将执行shouldComponentUpdate并且浅对比mergeProps的结果，避免不必要的更新，前提是当前组件是一个纯组件，它不依赖任何输入或state而只依赖于props和Redux store的state，默认值true</p>
-<p>[withRef = false] （Boolean）: 如果为true，connector会保存一个对呗包装组件实例的引用，该引用通过 getWrappedInstance() 方法获得，默认值false</p>
-<p><strong>代理方式的高阶组件</strong></p>
-<p><strong>继承方式的高阶组件</strong></p>
-
+        <h3 id="第一个React应用"><a href="#第一个React应用" class="headerlink" title="第一个React应用"></a>第一个React应用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 安装 create-react-app</div><div class="line">npm install --global create-react-app</div><div class="line"></div><div class="line">// 初始化创建应用</div><div class="line">create-react-app first_react_app</div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2017/10/12/前端React学习系列一：基础/#more">more >></a>
+        
       
 
       
@@ -566,15 +487,9 @@ render函数并不做实际渲染，只是返回一个JSX描述结构，渲染�
     <div class="article-entry" itemprop="articleBody">
       
         <p>1 官网下载Jenkins并启动</p>
-<p>2 浏览器 localhost:8080<br> sudo chmod -R /Users/Jenkins/Home/Secrets<br> 输入Jenkins提示秘钥文件密码</p>
-<p> 3 设置admin账号资料</p>
-<p> 4 系统插件 - 安装插件</p>
-<p> 5 sudo su jenkins </p>
-<p>  ssh keygen</p>
-<p>  得到id_rsa 和 id_rsa.pub</p>
-<p>  将id_rsa.pub 粘贴到仓库的ssh keys中，添加credentials，用户名就是你git操作仓库的账号，复制id_rsa私钥内容粘贴到credentials</p>
-<h2 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h2><p> <a href="http://blog.csdn.net/cloudsben/article/details/8177376" target="_blank" rel="external">解决构建添加仓库ssh时报错问题</a></p>
-
+        
+          <a class="article-more-a" href="/2017/09/28/jenkins集成iOS自动化打包/#more">more >></a>
+        
       
 
       
@@ -643,7 +558,7 @@ render函数并不做实际渲染，只是返回一个JSX描述结构，渲染�
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="PHP学习笔记"><a href="#PHP学习笔记" class="headerlink" title="PHP学习笔记"></a>PHP学习笔记</h1><h3 id="配置Apache"><a href="#配置Apache" class="headerlink" title="配置Apache"></a>配置Apache</h3>
+        <h3 id="配置Apache"><a href="#配置Apache" class="headerlink" title="配置Apache"></a>配置Apache</h3><p>mac自带php，查看版本   </p>
         
           <a class="article-more-a" href="/2017/09/19/PHP-Learning-Notes/#more">more >></a>
         

@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://rensihao.com">
   <title>前端React学习系列一：基础 | 任思豪的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前端React学习系列一：基础第一个React应用12345// 安装 create-react-appnpm install --global create-react-app// 初始化创建应用create-react-app first_react_app 初步理解React核心思想React，核心是所有组件按照数据驱动渲染模式工作，一切基于组件。 浏览器渲染HTML网页，首先会将HTML文">
+  <meta name="description" content="第一个React应用12345// 安装 create-react-appnpm install --global create-react-app// 初始化创建应用create-react-app first_react_app">
 <meta name="keywords" content="ES6,React">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端React学习系列一：基础">
 <meta property="og:url" content="http://rensihao.com/2017/10/12/前端React学习系列一：基础/index.html">
 <meta property="og:site_name" content="任思豪的博客">
-<meta property="og:description" content="前端React学习系列一：基础第一个React应用12345// 安装 create-react-appnpm install --global create-react-app// 初始化创建应用create-react-app first_react_app 初步理解React核心思想React，核心是所有组件按照数据驱动渲染模式工作，一切基于组件。 浏览器渲染HTML网页，首先会将HTML文">
-<meta property="og:updated_time" content="2017-11-24T06:34:29.000Z">
+<meta property="og:description" content="第一个React应用12345// 安装 create-react-appnpm install --global create-react-app// 初始化创建应用create-react-app first_react_app">
+<meta property="og:updated_time" content="2017-11-24T06:38:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端React学习系列一：基础">
-<meta name="twitter:description" content="前端React学习系列一：基础第一个React应用12345// 安装 create-react-appnpm install --global create-react-app// 初始化创建应用create-react-app first_react_app 初步理解React核心思想React，核心是所有组件按照数据驱动渲染模式工作，一切基于组件。 浏览器渲染HTML网页，首先会将HTML文">
+<meta name="twitter:description" content="第一个React应用12345// 安装 create-react-appnpm install --global create-react-app// 初始化创建应用create-react-app first_react_app">
   
     <link rel="alternative" href="/atom.xml" title="任思豪的博客" type="application/atom+xml">
   
@@ -180,7 +180,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前端React学习系列一：基础"><a href="#前端React学习系列一：基础" class="headerlink" title="前端React学习系列一：基础"></a>前端React学习系列一：基础</h1><h3 id="第一个React应用"><a href="#第一个React应用" class="headerlink" title="第一个React应用"></a>第一个React应用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 安装 create-react-app</div><div class="line">npm install --global create-react-app</div><div class="line"></div><div class="line">// 初始化创建应用</div><div class="line">create-react-app first_react_app</div></pre></td></tr></table></figure>
+        <h3 id="第一个React应用"><a href="#第一个React应用" class="headerlink" title="第一个React应用"></a>第一个React应用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 安装 create-react-app</div><div class="line">npm install --global create-react-app</div><div class="line"></div><div class="line">// 初始化创建应用</div><div class="line">create-react-app first_react_app</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="初步理解React核心思想"><a href="#初步理解React核心思想" class="headerlink" title="初步理解React核心思想"></a>初步理解React核心思想</h3><p>React，核心是所有组件按照数据驱动渲染模式工作，一切基于组件。</p>
 <pre><code>浏览器渲染HTML网页，首先会将HTML文本解析构建DOM树，然后根据DOM树渲染出用户看到的界面，改变界面就需要改变DOM树上的节点，因此，我们需要尽可能减少DOM操作。
 JSX会被Babel解析为创建React组件或HTML元素的语句，JSX首先构建Virtual DOM，Virtual DOM是对DOM树的抽象，它不会触及浏览器行为，只存在于JS空间的树形结构，因此每次渲染React组件时，都会对比这一次产生的Virtual DOM和上一次渲染的Virtutal DOM，发现差别，从而修改真正的DOM树就只需要修改差别中的部分即可。
