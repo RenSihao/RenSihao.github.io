@@ -160,6 +160,89 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-lldb调试Masonry约束警告潜在崩溃问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/10/lldb调试Masonry约束警告潜在崩溃问题/">lldb调试Masonry约束警告潜在问题</a>
+    </h1>
+  
+
+        
+        <a href="/2017/07/10/lldb调试Masonry约束警告潜在崩溃问题/" class="archive-article-date">
+  	<time datetime="2017-07-10T07:52:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="lldb调试Masonry约束警告潜在问题"><a href="#lldb调试Masonry约束警告潜在问题" class="headerlink" title="lldb调试Masonry约束警告潜在问题"></a>lldb调试Masonry约束警告潜在问题</h3><blockquote>
+<h3 id="事故现场"><a href="#事故现场" class="headerlink" title="事故现场"></a>事故现场</h3><pre><code>Will attempt to recover by breaking constraint 
+&lt;MASLayoutConstraint:0x1702ac060 ASValueTrackingSlider:0x1020e3c00.leading == UILabel:0x10ed19f20.trailing + 4&gt;
+Make a symbolic breakpoint at UIViewAlertForUnsatisfiableConstraints to catch this in the debugger.
+The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in &lt;UIKit/UIView.h&gt; may also be helpful.
+</code></pre></blockquote>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><pre><code>1.打开断点导航（cmd+7）
+2.点击左下角的+按钮
+3.选择Add Symbolic Breakpoint
+4.在Symbol添加UIViewAlertForUnsatisfiableConstraints
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">lldb</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Masonry</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/技术小栈/" class="article-tag-list-link color5">技术小栈</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/10/lldb调试Masonry约束警告潜在崩溃问题/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-UDID和UUID区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://rensihao.com">
-  <title>Archives: 2017 | 任思豪的博客</title>
+  <title>前端React上线PHP本地服务器配置小记 | 任思豪的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="iOS | blog | 博客 | 技术">
-<meta property="og:type" content="website">
-<meta property="og:title" content="任思豪的博客">
-<meta property="og:url" content="http://rensihao.com/archives/2017/page/2/index.html">
+  <meta name="description" content="十分感谢后台的田爽大神悉心指导，特整理记录于此。😁">
+<meta name="keywords" content="PHP,React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端React上线PHP本地服务器配置小记">
+<meta property="og:url" content="http://rensihao.com/2017/12/09/前端React上线PHP本地服务器配置小记/index.html">
 <meta property="og:site_name" content="任思豪的博客">
-<meta property="og:description" content="iOS | blog | 博客 | 技术">
+<meta property="og:description" content="十分感谢后台的田爽大神悉心指导，特整理记录于此。😁">
+<meta property="og:updated_time" content="2018-03-08T05:25:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="任思豪的博客">
-<meta name="twitter:description" content="iOS | blog | 博客 | 技术">
+<meta name="twitter:title" content="前端React上线PHP本地服务器配置小记">
+<meta name="twitter:description" content="十分感谢后台的田爽大神悉心指导，特整理记录于此。😁">
   
     <link rel="alternative" href="/atom.xml" title="任思豪的博客" type="application/atom+xml">
   
@@ -158,52 +160,113 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-前端React上线PHP本地服务器配置小记" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/10/lldb调试Masonry约束警告潜在崩溃问题/" class="archive-article-date">
-  	<time datetime="2017-07-10T07:52:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/10/lldb调试Masonry约束警告潜在崩溃问题/">lldb调试Masonry约束警告潜在问题</a>
+    <h1 class="article-title" itemprop="name">
+      前端React上线PHP本地服务器配置小记
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/12/09/前端React上线PHP本地服务器配置小记/" class="archive-article-date">
+  	<time datetime="2017-12-09T09:09:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>十分感谢后台的田爽大神悉心指导，特整理记录于此。😁</p>
+<a id="more"></a>
+<p>A. 安装MAMP</p>
+<p>配置环境变量：</p>
+<pre><code>1. 将php7.1.x（7.1.1）的可执行程序所在目录加入PATH （.zshrc）
+2. 执行命令: source .zshrc
+3. php -v 查看版本号，若是7.1.1表示PHP基本环境配置OK
+</code></pre><p>B. 安装php的phalcon扩展（即安装cphalcon）</p>
+<pre><code>git clone git://github.com/phalcon/cphalcon.git
+cd cphalcon/build
+sudo ./install
+若生成phalcon.so 表示成功（位于：/Applications/MAMP/bin/php/php7.1.1/lib/php/extensions/no-debug-non-zts-20160303/ ）
+</code></pre><p>C. 安装php的seaslog扩展<br>    phpize<br>    ./configure –with-php-config=/Applications/MAMP/bin/php/php7.1.1/bin/php-config<br>    make<br>    make install<br>    若生成seaslog.so 表示成功（位于：/Applications/MAMP/bin/php/php7.1.1/lib/php/extensions/no-debug-non-zts-20160303/ ）</p>
+<p>D. 将B,C中两个扩展配置到PHP</p>
+<pre><code>php -i | grep php.ini
+发现当前使用的配置文件位于：
+/Applications/MAMP/bin/php/php7.1.1/conf/php.ini
+
+编辑php.ini ，增加两行配置：
+extension=phalcon.so
+  extension=seaslog.so
+
+php -i | grep phalcon ,有结果即可
+php -i | grep seaslog ， 有结果即可
+
+在MAMP中同样方式修改php.ini
+重启环境
+</code></pre><p>E. 拉取代码（—recursive 同时拉取submodule）<br>git clone –recursive git@git.gegolab.com:wedu/wedu-web.git</p>
+<p>F. 在MAMP中，创建一个host（wedu.com)，<br>将其根目录指向 proj/service/public </p>
+<p>G. 安装php包<br>    下载composer.phar 到 ~<br>    cd ~<br>    ln -s composer.phar composer<br>    chmod 777 composer<br>    在环境变量中修改PATH，增加当前路径(/Users/xjzhao)<br>    配置中国镜像：composer config -g repo.packagist composer <a href="https://packagist.phpcomposer.com" target="_blank" rel="external">https://packagist.phpcomposer.com</a></p>
+<p>H. 准备运行时环境<br>    cd /path/to/project<br>    npm i<br>    cd service<br>    composer install<br>    cp config.ini.example config.ini</p>
+<pre><code>浏览器打开 wedu.com，若可以访问，表示环境OK
+</code></pre>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">lldb</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Masonry</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -216,171 +279,101 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://rensihao.com/2017/12/09/前端React上线PHP本地服务器配置小记/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/29/UDID和UUID区别/" class="archive-article-date">
-  	<time datetime="2017-06-29T03:33:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/29/UDID和UUID区别/">UDID和UUID区别</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">UDID</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">UUID</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/技术小栈/" class="article-tag-list-link color5">技术小栈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/15/ReactNative-install /" class="archive-article-date">
-  	<time datetime="2017-06-15T09:04:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/15/ReactNative-install /">React Native Learning Notes</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">React Native</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/技术小栈/" class="article-tag-list-link color5">技术小栈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/08/向死而生/" class="archive-article-date">
-  	<time datetime="2017-05-08T09:14:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/08/向死而生/">向死而生</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据备份</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/人生感悟/" class="article-tag-list-link color5">人生感悟</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/11/27/ES6语法学习系列三：字符串扩展/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ES6语法学习系列一：简介&amp;基础</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2017/">&laquo; Prev</a><a class="page-number" href="/archives/2017/">1</a><span class="page-number current">2</span>
-    </nav>
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: document.location.href, 
+    sourceId: "",
+    productKey: "c6448ffe6fbf4871b162e1d85c8f02a3",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+  
+
+  
+
   
 
 
@@ -412,8 +405,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
