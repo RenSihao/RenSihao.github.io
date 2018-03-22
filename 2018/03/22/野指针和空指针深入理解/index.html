@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://rensihao.com">
-  <title>Tag: JavaScript | 任思豪的博客</title>
+  <title>野指针和空指针深入理解 | 任思豪的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="iOS | blog | 博客 | 技术">
-<meta property="og:type" content="website">
-<meta property="og:title" content="任思豪的博客">
-<meta property="og:url" content="http://rensihao.com/tags/JavaScript/index.html">
+  <meta name="description" content="以前关于内存这一块，了解的不是很深，只知道对象不释放会占内存，循环创建新对象，会不停的占用可用内存栈，这叫内存泄漏，撑爆内存后叫内存溢出。 首先，最重要的一点，野指针和空指针是不同的。OC尤其明显。">
+<meta name="keywords" content="nil">
+<meta property="og:type" content="article">
+<meta property="og:title" content="野指针和空指针深入理解">
+<meta property="og:url" content="http://rensihao.com/2018/03/22/野指针和空指针深入理解/index.html">
 <meta property="og:site_name" content="任思豪的博客">
-<meta property="og:description" content="iOS | blog | 博客 | 技术">
+<meta property="og:description" content="以前关于内存这一块，了解的不是很深，只知道对象不释放会占内存，循环创建新对象，会不停的占用可用内存栈，这叫内存泄漏，撑爆内存后叫内存溢出。 首先，最重要的一点，野指针和空指针是不同的。OC尤其明显。">
+<meta property="og:updated_time" content="2018-03-22T06:22:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="任思豪的博客">
-<meta name="twitter:description" content="iOS | blog | 博客 | 技术">
+<meta name="twitter:title" content="野指针和空指针深入理解">
+<meta name="twitter:description" content="以前关于内存这一块，了解的不是很深，只知道对象不释放会占内存，循环创建新对象，会不停的占用可用内存栈，这叫内存泄漏，撑爆内存后叫内存溢出。 首先，最重要的一点，野指针和空指针是不同的。OC尤其明显。">
   
     <link rel="alternative" href="/atom.xml" title="任思豪的博客" type="application/atom+xml">
   
@@ -158,52 +160,87 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-野指针和空指针深入理解" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      野指针和空指针深入理解
+    </h1>
+  
+
+        
+        <a href="/2018/03/22/野指针和空指针深入理解/" class="archive-article-date">
+  	<time datetime="2018-03-22T03:13:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-22</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>以前关于内存这一块，了解的不是很深，只知道对象不释放会占内存，循环创建新对象，会不停的占用可用内存栈，这叫内存泄漏，撑爆内存后叫内存溢出。</p>
+<pre><code>首先，最重要的一点，野指针和空指针是不同的。OC尤其明显。
+</code></pre><a id="more"></a>
+<h2 id="定义区别"><a href="#定义区别" class="headerlink" title="定义区别"></a>定义区别</h2><h3 id="野指针"><a href="#野指针" class="headerlink" title="野指针"></a>野指针</h3><blockquote>
+<p>“野指针”不是NULL指针，是指向”垃圾”内存（不可用内存）的指针。野指针是非常危险的。</p>
+</blockquote>
+<h3 id="空指针"><a href="#空指针" class="headerlink" title="空指针"></a>空指针</h3><blockquote>
+<p>没有存储任何内存地址的指针就称为空指针(NULL指针)<br>空指针就是被赋值为0的指针，在没有被具体初始化之前，其值为0。</p>
+</blockquote>
+<h2 id="举🌰说明"><a href="#举🌰说明" class="headerlink" title="举🌰说明"></a>举🌰说明</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 假设Student对象的地址为0xff43，</span></div><div class="line"><span class="comment">// 指针变量的地址为0xee45</span></div><div class="line"><span class="comment">// stu中存储的是Student对象的地址0xff43</span></div><div class="line"><span class="comment">// 即指针变量stu指向了这个Student对象。</span></div><div class="line">Student *stu = [[Student alloc] init];</div><div class="line">[stu setAge:<span class="number">10</span>];</div><div class="line"></div><div class="line">---- 野指针 Begin ---- </div><div class="line"><span class="comment">// stu对象被释放，此时就成了野指针</span></div><div class="line">[stu release];</div><div class="line"><span class="comment">// 野指针发送消息，程序crash</span></div><div class="line">[stu setAge:<span class="number">10</span>];</div><div class="line">---- 野指针 End ---- </div><div class="line"></div><div class="line">---- 空指针 Begin ---- </div><div class="line"><span class="comment">// stu对象被释放，此时就成了野指针</span></div><div class="line">[stu release];</div><div class="line"><span class="comment">// 重新赋值nil，空指针</span></div><div class="line">stu = nil;</div><div class="line"><span class="comment">// 空指针发送消息，程序不会崩溃</span></div><div class="line">[stu setAge:<span class="number">10</span>];</div><div class="line">---- 空指针 End ----</div></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/27/ES6语法学习系列三：字符串扩展/" class="archive-article-date">
-  	<time datetime="2017-11-27T06:29:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/27/ES6语法学习系列三：字符串扩展/">ES6语法学习系列一：简介&amp;基础</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">nil</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -216,123 +253,102 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://rensihao.com/2018/03/22/野指针和空指针深入理解/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/24/ES6语法学习系列二：变量的解构赋值/" class="archive-article-date">
-  	<time datetime="2017-11-24T06:03:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/24/ES6语法学习系列二：变量的解构赋值/">ES6语法学习系列二：变量的解构赋值</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/技术小栈/" class="article-tag-list-link color5">技术小栈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/20/ES6语法学习系列一：简介&基础/" class="archive-article-date">
-  	<time datetime="2017-10-20T09:37:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/20/ES6语法学习系列一：简介&基础/">ES6语法学习系列一：简介&amp;基础</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/技术小栈/" class="article-tag-list-link color5">技术小栈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/02/26/React移动端rem适配解决方案/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">React移动端rem适配解决方案</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
   
 
-    
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: document.location.href, 
+    sourceId: "",
+    productKey: "c6448ffe6fbf4871b162e1d85c8f02a3",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+  
+
+  
+
+  
 
 
           </div>
@@ -363,9 +379,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
